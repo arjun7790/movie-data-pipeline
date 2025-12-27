@@ -1,0 +1,11 @@
+#pip install -r requirements.txt
+pandas
+requests
+SQLAlchemy
+psycopg2-binary
+pymysql
+pandas
+matplotlib
+seaborn
+scikit-learn    
+numpy
