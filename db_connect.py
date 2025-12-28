@@ -1,14 +1,22 @@
-#python db_connect.py
 import pymysql
 
-connector = pymysql.connect(
+conn = pymysql.connect(
     host="localhost",
     user="root",
     password="root",
     port=3306
 )
 
-cursor = connector.cursor()
-print("Connected successfully")
+cursor = conn.cursor()
 
-connector.close()
+with open("schema.sql", "r") as file:
+    sql_script = file.read()
+
+for statement in sql_script.split(";"):
+    if statement.strip():
+        cursor.execute(statement)
+
+conn.commit()
+conn.close()
+
+print("Database tables created successfully")
